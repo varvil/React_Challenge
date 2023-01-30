@@ -5,7 +5,14 @@ interface Item {
   name: string;
   description: string;
   comment: string;
-  index: number;
+}
+
+//function that takes an index as a parameter, removes the corresponding item from the array of items stored in local storage, and overwrites the key with the updated array.
+const deleteItem = (index:number) => {
+  let items = JSON.parse(localStorage.getItem("items")!) as Item[];
+  const updatedItems = items.filter((item, i) => i !== index);
+  localStorage.setItem("items", JSON.stringify(updatedItems));
+  window.location.reload();
 }
 
 const Items = () => {
@@ -29,7 +36,7 @@ const Items = () => {
             </div>
 
             <div className="button__content">
-            <button className="delete__item">Delete</button>
+            <button className="delete__item" onClick={() => deleteItem(index)}>Delete</button>
             <button className="details__item">Details</button>
             </div>
           </div>

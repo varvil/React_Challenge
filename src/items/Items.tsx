@@ -4,6 +4,8 @@ import "./items.css";
 interface Item {
   name: string;
   description: string;
+  comment: string;
+  index: number;
 }
 
 const Items = () => {
@@ -13,26 +15,25 @@ const Items = () => {
   return (
     <div className="items__wrapper">
       <div className="items__container">
-        <div className="item__table">
-          <table>
-            <tr>
-              <th>Name</th>
-              <th>Description</th>
-            </tr>
-            {items.map((item, index: number) => (
-              <tr key={index}>
-                <td className="name__td">{item.name}</td>
-                <td className="description__td">{item.description}</td>
-                <td className="buttontd">
-                  <button>Delete</button>
-                </td>
-                <td className="buttontd">
-                  <button>Details</button>
-                </td>
-              </tr>
-            ))}
-          </table>
-        </div>
+        {items.map((item, index:number) => (
+          <div key={index} className="item__content">
+
+            <div className="name__content">
+            <h3>Name</h3>
+            <p>{item.name}</p>
+            </div>
+
+            <div className="description__content">
+            <h3>Description</h3>
+            <p>{item.description}</p>
+            </div>
+
+            <div className="button__content">
+            <button className="delete__item">Delete</button>
+            <button className="details__item">Details</button>
+            </div>
+          </div>
+        ))} 
       </div>
     </div>
   );

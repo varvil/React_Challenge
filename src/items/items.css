@@ -107,5 +107,20 @@
     margin-left: 2rem;
 }
 
+@media screen and (max-width: 768px) {
+
+    .items__wrapper {
+        width: 900px;
+    }
+
+    .items__container {
+        width: 300px;
+    }
+
+    .item__content {
+        width: 100px;
+    }
+}
+
 
 

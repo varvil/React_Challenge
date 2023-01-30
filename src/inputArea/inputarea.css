@@ -105,3 +105,22 @@
 .clear__button:hover {
     background-color: #f0f0f0;
 }
+
+
+@media screen and (max-width: 768px) {
+    .input__container {
+        display: grid;
+        text-align: center;
+        margin-top: 5rem;
+    }
+
+    .form__field {
+        margin: 0;
+    }
+
+    #description {
+        margin-top: 3rem;
+        width: 390px;
+    }
+
+}

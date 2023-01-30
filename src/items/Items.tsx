@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./items.css";
 
 interface Item {
@@ -16,6 +16,8 @@ const deleteItem = (index:number) => {
 }
 
 const Items = () => {
+  const [selectedItem, setSelectedItem] = useState<Item | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
   const items = (JSON.parse(localStorage.getItem("items")!) as Item[]) || [];
   console.log(items);
 
@@ -37,11 +39,26 @@ const Items = () => {
 
             <div className="button__content">
             <button className="delete__item" onClick={() => deleteItem(index)}>Delete</button>
-            <button className="details__item">Details</button>
+            <button className="details__item"onClick={() => setSelectedItem(item)}>Details</button>
             </div>
           </div>
         ))} 
       </div>
+      {selectedItem && (
+        <div className="modal">
+          <div className="modal__content">
+            <div className="mbutton__content">
+<button className="modal__button" onClick={() => setSelectedItem(null)}><i className="uil uil-times"></i></button>
+          </div>
+            <h3>Name</h3>
+            <p>{selectedItem.name}</p>
+            <h3>Description</h3>
+            <p>{selectedItem.description}</p>
+            <h3>Comment</h3>
+            <p>{selectedItem.comment}</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
